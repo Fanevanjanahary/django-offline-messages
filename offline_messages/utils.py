@@ -36,13 +36,7 @@ also have access to be able to do things like...
 
 """.strip()
 
-
-def create_offline_message(user,
-                           message,
-                           level=constants.INFO,
-                           read=False,
-                           content_object=None,
-                           meta={}):
+def create_offline_message(user, message, level=constants.INFO):
 
     if not isinstance(user, get_user_model()):
         user = get_user_model().objects.get(username=user)
@@ -54,13 +48,8 @@ def create_offline_message(user,
         user=user,
         level=level,
         tags=label_tag,
-        read=read,
         message=message,
-        meta=dict(meta)
     )
-
-    if content_object:
-        kwargs['content_object'] = content_object
 
     return OfflineMessage.objects.create(**kwargs)
 

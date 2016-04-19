@@ -58,16 +58,6 @@ class OfflineMessage(models.Model):
     message = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
 
-    read = models.BooleanField(default=False)
-
-    content_type = models.ForeignKey(ContentType, blank=True, null=True)
-    object_id = models.PositiveIntegerField(blank=True, null=True)
-    content_object = GenericForeignKey('content_type', 'object_id')
-
-    meta = JSONField(default={}, blank=True, null=True)
-
-    objects = OfflineMessageManager()
-
     def __unicode__(self):
         return force_unicode(self.message)
 
