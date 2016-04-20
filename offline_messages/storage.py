@@ -21,7 +21,6 @@ class OfflineStorageEngine(SessionStorage):
 
             if offline_messages:
                 messages.extend(offline_messages)
-                offline_messages.update(read=True)
 
         online_messages, all_retrieved = super(OfflineStorageEngine, self)._get(*args, **kwargs)
         if online_messages:
