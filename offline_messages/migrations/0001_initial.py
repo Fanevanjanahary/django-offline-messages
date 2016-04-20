@@ -21,10 +21,6 @@ class Migration(migrations.Migration):
                 ('level', models.IntegerField(default=20)),
                 ('message', models.CharField(max_length=200)),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('read', models.BooleanField(default=False)),
-                ('object_id', models.PositiveIntegerField(null=True, blank=True)),
-                ('meta', jsonfield.fields.JSONField(default={}, null=True, blank=True)),
-                ('content_type', models.ForeignKey(blank=True, to='contenttypes.ContentType', null=True)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={

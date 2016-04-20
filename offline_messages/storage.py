@@ -17,11 +17,10 @@ class OfflineStorageEngine(SessionStorage):
         messages = []
 
         if hasattr(self.request, 'user') and self.request.user.is_authenticated():
-            offline_messages = OfflineMessage.objects.filter(user=self.request.user, read=False)
+            offline_messages = OfflineMessage.objects.filter(user=self.request.user)
 
             if offline_messages:
                 messages.extend(offline_messages)
-                offline_messages.update(read=True)
 
         online_messages, all_retrieved = super(OfflineStorageEngine, self)._get(*args, **kwargs)
         if online_messages:
